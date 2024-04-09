@@ -10,13 +10,13 @@ class Page {
         "data"=>[]
     ];
     //primeiro a ser executado
-    public function __construct($opts = array())
+    public function __construct($opts = array(), $tpl_dir = "/views/")
     {
         $this->options = array_merge($this->defaults, $opts);
 
         $config = array(
-            "tpl_dir"       => $_SERVER["DOCUMENT_ROOT"]."/views/",
-            "cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache",
+            "tpl_dir"       => $_SERVER["DOCUMENT_ROOT"].$tpl_dir,
+            "cache_dir"     => $_SERVER["DOCUMENT_ROOT"]."/views-cache/",
             "debug"         => false
            );
         Tpl::configure($config);
@@ -24,7 +24,7 @@ class Page {
         $this->tpl = new Tpl;
         
         $this->setData($this->options["data"]);
-        
+        //escreve o header html
         $this->tpl->draw("header");
     }
     //cria nossos 'assigns' 
@@ -33,7 +33,7 @@ class Page {
             $this->tpl->assign($key, $value);
         }
     }
-    //nome da pagina, dados, e o return do metodo draw
+    //nome da pagina, dados, corpo da pagina
     public function setTpl($name, $data = array(), $returnHTML = false){
         $this->setData($data);
         return $this->tpl->draw($name, $returnHTML);
@@ -43,6 +43,7 @@ class Page {
 
 
     //ultimo a ser executado
+    //footer do site
     public function __destruct()
     {
         $this->tpl->draw("footer");
