@@ -9,7 +9,7 @@ class Page {
     private $options = [];
     private $defaults = [
         "header"=>true,
-        "footer"=>false,
+        "footer"=>true,
         "data"=>[]
     ];
     //(primeiro a ser executado)a funcao construct recebe dois parametros: 1- um array vazio, 2: um arry com uma chave, e vamos fundir os dois mais tarde
