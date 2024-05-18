@@ -1,9 +1,9 @@
 <?php return array(
     'root' => array(
         'name' => 'matheusms1305/ecommerce',
-        'pretty_version' => '1.0.0+no-version-set',
-        'version' => '1.0.0.0',
-        'reference' => null,
+        'pretty_version' => 'dev-master',
+        'version' => 'dev-master',
+        'reference' => '1d64e07bd75b5941d1d702eabfbce5356798baff',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -11,18 +11,18 @@
     ),
     'versions' => array(
         'matheusms1305/ecommerce' => array(
-            'pretty_version' => '1.0.0+no-version-set',
-            'version' => '1.0.0.0',
-            'reference' => null,
+            'pretty_version' => 'dev-master',
+            'version' => 'dev-master',
+            'reference' => '1d64e07bd75b5941d1d702eabfbce5356798baff',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
             'dev_requirement' => false,
         ),
         'phpmailer/phpmailer' => array(
-            'pretty_version' => 'v5.2.22',
-            'version' => '5.2.22.0',
-            'reference' => 'b18cb98131bd83103ccb26a888fdfe3177b8a663',
+            'pretty_version' => 'v6.9.1',
+            'version' => '6.9.1.0',
+            'reference' => '039de174cd9c17a8389754d3b877a2ed22743e18',
             'type' => 'library',
             'install_path' => __DIR__ . '/../phpmailer/phpmailer',
             'aliases' => array(),

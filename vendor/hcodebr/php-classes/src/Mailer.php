@@ -1,7 +1,7 @@
 <?php 
-namespace HCODE;
+namespace Hcode;
 
-use PHPMailer;
+use PHPMailer\PHPMailer\PHPMailer;
 use Rain\Tpl;
 
 class Mailer{
@@ -32,8 +32,15 @@ class Mailer{
         //Create a new PHPMailer instance
         $this->mail = new PHPMailer();
 
-        //Tell PHPMailer to use SMTP
         $this->mail->isSMTP();
+        $this->mail->SMTPOptions = array(
+        'ssl' => array(
+        'verify_peer' => false,
+        'verify_peer_name' => false,
+        'allow_self_signed' => true
+    )
+);
+        
 
         //Enable SMTP debugging
         //SMTP::DEBUG_OFF = off (for production use)
@@ -70,7 +77,7 @@ class Mailer{
         //Note that with gmail you can only use your account address (same as `Username`)
         //or predefined aliases that you have configured within your account.
         //Do not use user-submitted addresses in here
-        $this->mail->setFrom(MaIler::USERNAME, 'First Last');
+        $this->mail->setFrom(Mailer::USERNAME, 'First Last');
 
         //Set an alternative reply-to address
         //This is a good place to put user-submitted addresses
