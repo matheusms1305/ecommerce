@@ -10,8 +10,9 @@ use \Hcode\Model;
 class Category extends Model{
     
     public static function listAll(){
+
         $sql = new Sql();
-        //o usuario precisa de uma pessoa, tem um id person lá que é outra table, dai vamos unir as tabelas(inner join), usando o idperson que tem nas duas
+      
         return  $sql->select("SELECT * FROM tb_categories ORDER BY descategory");
 
 
@@ -29,6 +30,8 @@ class Category extends Model{
 		));
 
 		$this->setData($results[0]);
+
+		Category::update_file();
 	}
 
 	public function get($idcategory)
@@ -46,7 +49,25 @@ class Category extends Model{
 		$sql = new sql();
 
 		$sql->query("DELETE FROM tb_categories WHERE idcategory = :idcategory", ['idcategory'=>$this->getidcategory()]);
+
+		Category::update_file();
 	} 
+
+	public static function update_file()
+	{
+
+		$categories = Category::listAll();
+
+		$html = [];
+
+		foreach ($categories as $row)
+		{
+			array_push($html, '<li><a href="/categories/'.$row['idcategory'].'">'.$row['descategory'].'</a></li>');
+		}
+
+		file_put_contents($_SERVER['DOCUMENT_ROOT']. DIRECTORY_SEPARATOR . "views" . DIRECTORY_SEPARATOR . "categories-menu.html", implode('', $html));
+
+	}
 }
 
 
