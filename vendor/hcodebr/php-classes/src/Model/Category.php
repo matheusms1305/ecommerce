@@ -48,7 +48,7 @@ class Category extends Model{
 	{
 		$sql = new sql();
 
-		$sql->query("DELETE FROM tb_categories WHERE idcategory = :idcategory", ['idcategory'=>$this->getidcategory()]);
+		$sql->query("DELETE FROM tb_categories WHERE idcategory = :idcategory", [':idcategory'=>$this->getidcategory()]);
 
 		Category::update_file();
 	} 
